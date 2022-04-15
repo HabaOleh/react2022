@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+
+import {FullUser, Users, Posts} from "./components";
+import css from "./App.module.css"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [user, setUser] = useState(null);
+    const [userPosts, setUserPosts] = useState([]);
+
+    return (
+        <div>
+            <div className={css.usersAndInfo}>
+                <Users setUser={setUser}/>
+                {
+                    user && <FullUser key={user.id} user={user} setUserPosts={setUserPosts}/>
+                }
+            </div>
+            <Posts userId={userPosts}/>
+        </div>
+    );
 }
 
 export default App;
