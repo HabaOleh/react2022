@@ -1,0 +1,8 @@
+.userWrap{
+    display: flex;
+    justify-content: space-between;
+}
+.right {
+    width: 50%;
+}
+
